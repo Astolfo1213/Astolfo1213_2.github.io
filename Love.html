@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Love</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="time">
+   <p class= "serif" id="time1"></p>
+  </div>
+  <div class="congratulations">
+    <p class="serif">Happy birthday to you!</p>
+  </div>
+  <div class="page">
+    <p class="li-none" id="page2Txt" style="display: none">
+      时至今日，中国无论军事、经济，还是文化、精神，都已经跻身于世界强国之列，中华人民共和国正慢慢崛起，她的发展是
+    </p>
+    <div class="el-page2 li-none">
+      <h1 class="page2-title">To My Yyx</h1>
+      <p class="page2-txt" id="page2TxtShow"></p>
+    </div>
+  </div>
+  <div class="slidershow middle">
+
+    <div class="slides">
+      <input type="radio" name="r" id="r1" checked>
+      <input type="radio" name="r" id="r2">
+      <input type="radio" name="r" id="r3">
+      <input type="radio" name="r" id="r4">
+      <input type="radio" name="r" id="r5">
+      <input type="radio" name="r" id="r6">
+      <input type="radio" name="r" id="r7">
+      <div class="slide s1">
+        <img src="../try4/image/1.jpg" alt="">
+      </div>
+      <div class="slide">
+        <img src="../try4/image/2.jpg" alt="">
+      </div>
+      <div class="slide">
+        <img src="../try4/image/3.jpg" alt="">
+      </div>
+      <div class="slide">
+        <img src="../try4/image/4.jpg" alt="">
+      </div>
+      <div class="slide">
+        <img src="../try4/image/5.jpg" alt="">
+      </div>
+      <div class="slide">
+        <img src="../try4/image/6.jpg" alt="">
+      </div>
+      <div class="slide">
+        <img src="../try4/image/7.jpg" alt="">
+      </div>
+    </div>
+
+    <div class="navigation">
+      <label for="r1" class="bar"></label>
+      <label for="r2" class="bar"></label>
+      <label for="r3" class="bar"></label>
+      <label for="r4" class="bar"></label>
+      <label for="r5" class="bar"></label>
+      <label for="r6" class="bar"></label>
+      <label for="r7" class="bar"></label>
+    </div>
+  </div>
+  <script>
+    function mytime() {
+      var a = new Date();
+      var b = a.toLocaleTimeString();
+      var setYear = 2015;
+      var setMonth = 10;
+      var setDay = 3;
+      var setHour = 0;
+      var setMinute = 0;
+      var setSecond = 0;
+      var nTime = b.split(':');
+      var nowHour = nTime[0].substr(2,3);
+      var nowMinute = nTime[1];
+      var nowSecond = nTime[2];
+      var c = a.toLocaleDateString();
+      var nDate = c.split('/');
+      var nowYear= nDate[0];
+      var nowMonth= nDate[1];
+      var nowDay= nDate[2];
+      var countday = (nowYear-setYear)*365 + (nowMonth-setMonth)*30+ (nowDay-setDay) - 1;
+      document.getElementById("time1").innerHTML = "CountTime: " + countday + " day" + "&nbsp"
+        + Math.abs(nowHour-setHour-12) + " hour " + nowMinute + " minute " + nowSecond + " Seconds";
+    }
+    setInterval(function () {
+      mytime()
+    },1000);
+
+    var page2Txt = document.getElementById('page2Txt'),
+      page2TxtShow = document.getElementById('page2TxtShow'),
+      i = 0,
+      timer = setInterval(function(){
+        page2TxtShow.innerHTML = page2Txt.innerHTML.substring(0, i);
+        i++;
+        if(page2TxtShow.innerHTML == page2Txt.innerHTML){
+          clearInterval(timer);
+        }
+      },100);
+  </script>
+</body>
+</html>
